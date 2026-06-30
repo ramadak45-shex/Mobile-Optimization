@@ -1,52 +1,47 @@
-<!DOCTYPE html>
-<html lang="ckb" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>ڕێکخستنی ١٠٠ یاری بۆ یاریزانان</title>
-    <style>
-        body { font-family: Tahoma, sans-serif; background-color: #121212; color: white; text-align: center; padding: 20px; }
-        #search { width: 90%; max-width: 500px; padding: 15px; margin-bottom: 20px; border-radius: 10px; border: 1px solid #007a3d; background: #1e1e1e; color: white; }
-        .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-        .card { background: #1e1e1e; padding: 15px; border-radius: 10px; border: 1px solid #333; }
-        button { background: #007a3d; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; }
-        #info-box { margin: 20px auto; padding: 20px; background: #252525; border-radius: 10px; max-width: 600px; border-right: 5px solid #007a3d; display: none; font-size: 16px; }
-    </style>
-</head>
-<body>
-    <h1>ڕێکخستنی ١٠٠ یاری بۆ یاریزانان</h1>
-    <input type="text" id="search" onkeyup="renderGames()" placeholder="گەڕان بۆ یارییەکان...">
-    <div id="info-box"></div>
-    <div class="container" id="game-list"></div>
-
-    <script>
+<script>
         const games = [
-            {name: "PUBG Mobile", guide: "گرافیک: Smooth، فریم: Extreme، Anti-aliasing: Off."},
-            {name: "Standoff 2", guide: "Shader: Low، Texture: Low، FPS: 60."},
-            {name: "Free Fire", guide: "گرافیک: Smooth، High FPS: On."},
-            {name: "Call of Duty", guide: "گرافیک: Low، فریم: Max، DoF: Off."},
-            {name: "Minecraft", guide: "Render Dist: 8، Fancy: Off."},
-            {name: "Car Parking", guide: "Resolution: 70%، Shadows: Off."},
-            {name: "Genshin Impact", guide: "Graphics: Lowest، FPS: 30."},
-            {name: "Roblox", guide: "Quality: 1، Graphics: Manual."},
-            {name: "Apex Legends", guide: "Smooth، Ultra FPS."},
-            {name: "FIFA Mobile", guide: "Medium، 60 FPS."},
-            {name: "Asphalt 9", guide: "Performance، Off effects."},
-            {name: "Shadow Fight 3", guide: "Low، No Shadows."},
-            {name: "Dead by Daylight", guide: "Low، 60% Res."},
-            {name: "Diablo Immortal", guide: "Low، Fog Off."},
+            {name: "PUBG Mobile", guide: "Smooth, Extreme FPS, Off Anti-aliasing."},
+            {name: "Standoff 2", guide: "Low Shader, Low Texture, 60 FPS."},
+            {name: "Free Fire", guide: "Smooth, High FPS On."},
+            {name: "Call of Duty", guide: "Low, Max FPS, Off DoF."},
+            {name: "Minecraft", guide: "Render Dist 8, Fancy Off."},
+            {name: "Car Parking", guide: "Res 70%, Shadows Off."},
+            {name: "Genshin Impact", guide: "Lowest, 30 FPS."},
+            {name: "Roblox", guide: "Quality 1, Manual."},
+            {name: "Apex Legends", guide: "Smooth, Ultra FPS."},
+            {name: "FIFA Mobile", guide: "Medium, 60 FPS."},
+            {name: "Asphalt 9", guide: "Performance, Off effects."},
+            {name: "Shadow Fight 3", guide: "Low, No Shadows."},
+            {name: "Dead by Daylight", guide: "Low, 60% Res."},
+            {name: "Diablo Immortal", guide: "Low, Fog Off."},
             {name: "War Thunder", guide: "Ultra Low."},
-            {name: "Arena Breakout", guide: "Smooth، High FPS."},
-            {name: "Undawn", guide: "Low، 30 FPS."},
-            {name: "CarX Drift", guide: "Low، No Shadows."},
-            {name: "Modern Ops", guide: "Low، No Shadows."},
-            {name: "Oxide Survival", guide: "Low، Terrain Low."},
-            // لێرەدا بەردەوام دەبین تا 100 یاری (بۆ نموونە 80 یاریی تر زیاد دەکرێت بە هەمان شێوە)
+            {name: "Arena Breakout", guide: "Smooth, High FPS."},
+            {name: "Undawn", guide: "Low, 30 FPS."},
+            {name: "CarX Drift", guide: "Low, No Shadows."},
+            {name: "Modern Ops", guide: "Low, No Shadows."},
+            {name: "Oxide Survival", guide: "Low, Terrain Low."},
+            // لێرە بەدواوە ناوی یارییەکانت بنووسە
+            {name: "Brawl Stars", guide: "High FPS, Low Effects."},
+            {name: "Clash of Clans", guide: "Low Visual Effects."},
+            {name: "Subway Surfers", guide: "Battery Saver Off."},
+            {name: "Among Us", guide: "VSync Off."},
+            {name: "Hill Climb 2", guide: "Low Graphics."},
+            {name: "Plants vs Zombies", guide: "Low Animation."},
+            {name: "Real Racing 3", guide: "Low, No Shadows."},
+            {name: "Hitman Sniper", guide: "Medium, Off AA."},
+            {name: "Into the Dead 2", guide: "Low, No Shadows."},
+            {name: "LifeAfter", guide: "Smooth, 60 FPS."},
+            {name: "Free Fire Max", guide: "Smooth, Off High Res."},
+            {name: "Dawn of Zombies", guide: "Low, Low Shadows."},
+            {name: "Cyber Hunter", guide: "Smooth, High FPS."},
+            {name: "Rules of Survival", guide: "Low, No Shadows."},
+            {name: "Knives Out", guide: "Low, No Shadows."},
+            {name: "Rebel Racing", guide: "Performance, No Shadows."},
+            {name: "Angry Birds 2", guide: "High Perf."},
+            {name: "Geometry Dash", guide: "Smooth Fix On."},
+            {name: "Vector 2", guide: "Medium, Off Blur."},
+            {name: "Soul Knight", guide: "Smooth, Low Particles."}
         ];
-        
-        // تێبینی: بۆ ئەوەی کۆدەکە زۆر درێژ نەبێت، دەتوانیت 80 ناوی تریش بەم شێوەیە زیاد بکەیت
-        for(let i=21; i<=100; i++) {
-            games.push({name: "Game " + i, guide: "گرافیک: Low، فریم: Max."});
-        }
 
         function showGuide(text) {
             const box = document.getElementById('info-box');
@@ -64,5 +59,3 @@
         }
         renderGames();
     </script>
-</body>
-</html>
